@@ -18,6 +18,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .inMemoryAuthentication()
                 .withUser("Ahmed").password(passwordEncoder().encode("Ahmed123")).roles("ADMIN")
                 .and()
+                .withUser("Ali").password(passwordEncoder().encode("Ali123")).roles("MANAGER")
+                .and()
                 .withUser("Mohamed").password(passwordEncoder().encode("Mohamed123")).roles("USER");
 
     }
@@ -26,7 +28,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .anyRequest().authenticated()
+                .antMatchers("/api/v1/main").permitAll()
+                .antMatchers("/api/v1/profile").authenticated()
+                .antMatchers("/api/v1/admin/**").hasRole("ADMIN")
+
+                .antMatchers("/api/v1/management").hasAnyRole("ADMIN","MANAGER")
+//                .anyRequest().authenticated()
                 .and().httpBasic();
     }
 
