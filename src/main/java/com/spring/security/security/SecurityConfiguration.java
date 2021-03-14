@@ -17,12 +17,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         auth
                 .inMemoryAuthentication()
                 .withUser("Ahmed").password(passwordEncoder().encode("Ahmed123"))
-                .roles("ADMIN").authorities("ACCESS_BASIC_ALL")
+//                .roles("ADMIN")
+                .authorities("ACCESS_BASIC_ALL", "ROLE_ADMIN")
                 .and()
                 .withUser("Ali").password(passwordEncoder().encode("Ali123"))
-                .roles("MANAGER").authorities("ACCESS_BASIC_MY")
+//                .roles("MANAGER")
+                .authorities("ACCESS_BASIC_MY", "ROLE_MANAGER")
                 .and()
-                .withUser("Mohamed").password(passwordEncoder().encode("Mohamed123")).roles("USER");
+                .withUser("Mohamed").password(passwordEncoder().encode("Mohamed123"))
+                .roles("USER");
 
     }
 
