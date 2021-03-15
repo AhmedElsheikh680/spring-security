@@ -27,28 +27,31 @@ public class DataLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        this.userRepo.deleteAll();
-        User admin = new User("Ahmed","Ahmed123", "30","Cairo",1);
-        admin.setRoles(this.roleRepo.findAll());
-        admin.setAuthorities(this.authoritiesRepo.findAll());
-        userRepo.save(admin);
-        //////////////////////////////////////
-        User manager = new User("Ali", "Ali123", "25","Giza",1);
-        Role managerRole1  = roleRepo.findById(2L).get();
-        Role managerRole2  = roleRepo.findById(3L).get();
-        Authorities managerAuthorities1 =  authoritiesRepo.findById(2L).get();
-        Authorities managerAuthorities2 =  authoritiesRepo.findById(3L).get();
-        manager.getRoles().add(managerRole1);
-        manager.getRoles().add(managerRole2);
-        manager.getAuthorities().add(managerAuthorities1);
-        manager.getAuthorities().add(managerAuthorities2);
-        userRepo.save(manager);
-        ///////////////////////////////////////
-        User user  = new User("Mohamed", "Mohamed123","35", "Shbra",1);
-        Role userRole = roleRepo.findById(3L).get();
-        Authorities userAuthorities = authoritiesRepo.findById(3L).get();
-        user.getRoles().add(userRole);
-        user.getAuthorities().add(userAuthorities);
-        userRepo.save(user);
+
+       User user =  this.userRepo.findByUsername("Ahmed");
+        System.out.println(user.getAddress());
+//        this.userRepo.deleteAll();
+//        User admin = new User("Ahmed","Ahmed123", "30","Cairo",1);
+//        admin.setRoles(this.roleRepo.findAll());
+//        admin.setAuthorities(this.authoritiesRepo.findAll());
+//        userRepo.save(admin);
+//        //////////////////////////////////////
+//        User manager = new User("Ali", "Ali123", "25","Giza",1);
+//        Role managerRole1  = roleRepo.findById(2L).get();
+//        Role managerRole2  = roleRepo.findById(3L).get();
+//        Authorities managerAuthorities1 =  authoritiesRepo.findById(2L).get();
+//        Authorities managerAuthorities2 =  authoritiesRepo.findById(3L).get();
+//        manager.getRoles().add(managerRole1);
+//        manager.getRoles().add(managerRole2);
+//        manager.getAuthorities().add(managerAuthorities1);
+//        manager.getAuthorities().add(managerAuthorities2);
+//        userRepo.save(manager);
+//        ///////////////////////////////////////
+//        User user  = new User("Mohamed", "Mohamed123","35", "Shbra",1);
+//        Role userRole = roleRepo.findById(3L).get();
+//        Authorities userAuthorities = authoritiesRepo.findById(3L).get();
+//        user.getRoles().add(userRole);
+//        user.getAuthorities().add(userAuthorities);
+//        userRepo.save(user);
     }
 }
