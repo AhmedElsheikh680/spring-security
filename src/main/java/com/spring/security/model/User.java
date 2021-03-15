@@ -29,13 +29,7 @@ public class User {
     @Column(name = "active")
     private int active; // Represent Email if Activel =>1 else not Active =>0
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "user_role",
-            joinColumns = {@JoinColumn(name = "user_id")},
-            inverseJoinColumns = {@JoinColumn(name = "role_id")}
-    )
-    private List<Role> roles = new ArrayList<>();
+
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
@@ -104,13 +98,7 @@ public class User {
         this.active = active;
     }
 
-    public List<Role> getRoles() {
-        return roles;
-    }
 
-    public void setRoles(List<Role> roles) {
-        this.roles = roles;
-    }
 
     public List<Authorities> getAuthorities() {
         return authorities;
