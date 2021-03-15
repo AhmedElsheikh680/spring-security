@@ -1,6 +1,7 @@
 package com.spring.security.model;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -16,5 +17,36 @@ public class Authorities {
     private String AythorityName;
 
     @ManyToMany(mappedBy = "authorities")
-    private Set<User> users;
+    private List<User> users;
+
+    public Authorities() {
+    }
+
+    public Authorities(String aythorityName) {
+        AythorityName = aythorityName;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getAythorityName() {
+        return AythorityName;
+    }
+
+    public void setAythorityName(String aythorityName) {
+        AythorityName = aythorityName;
+    }
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
 }
