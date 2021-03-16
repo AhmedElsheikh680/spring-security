@@ -54,7 +54,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/v1/basic/mybasic").hasAuthority("ACCESS_BASIC_MY")
                 .antMatchers("/api/v1/management").hasAnyRole("ADMIN","MANAGER")
 //                .anyRequest().authenticated()
-                .and().httpBasic();
+                .and()
+                .formLogin()
+                .loginPage("/api/v1/login").permitAll();
+//                .httpBasic();
     }
 
     @Bean
