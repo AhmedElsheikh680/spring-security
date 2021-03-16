@@ -31,7 +31,7 @@ public class User {
 
 
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name="user_authorities",
             joinColumns = {@JoinColumn(name = "user_id")},
