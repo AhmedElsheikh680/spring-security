@@ -1,8 +1,7 @@
 package com.spring.security.base;
 
 
-import com.spring.security.model.Authorities;
-import com.spring.security.model.User;
+
 import com.spring.security.repo.AuthoritiesRepo;
 import com.spring.security.repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;

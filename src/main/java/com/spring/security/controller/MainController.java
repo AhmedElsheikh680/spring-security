@@ -33,4 +33,3 @@ public class MainController {
         return "admin/myadmin";
     }
 }
-
